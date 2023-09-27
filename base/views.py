@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
+from .controller import EmailController
 
-# Create your views here.
+
+email_controller = EmailController()
+
+class EmailAPIView(ModelViewSet):
+    def send(self, request):
+        return email_controller.send(request)
